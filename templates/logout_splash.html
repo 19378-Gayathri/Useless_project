@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logging out...</title>
+    <style>
+        body {
+            background: linear-gradient(to bottom, #00BFFF, #1E90FF);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            color: white;
+            text-align: center;
+            overflow: hidden;
+        }
+        .container h1 {
+            font-size: 3em;
+            text-shadow: 2px 2px #003366;
+        }
+        .container img {
+            max-width: 250px;
+            animation: wiggle 2s linear infinite;
+        }
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(-3deg); }
+            50% { transform: rotate(3deg); }
+        }
+    </style>
+</head> 
+<body>
+
+    <div class="container">
+        <h1>Wiggling out... Goodbye!</h1>
+        <img src="{{ url_for('static', filename='Logout_image.jpg') }}" alt="Waving fish goodbye">
+    </div>
+    
+
+    <!-- This JavaScript handles the automatic redirect -->
+    <script>
+        // Wait for 2.5 seconds (2500 milliseconds) before running the redirect function.
+        setTimeout(function() {
+            
+            // This line tells the browser to go to the login page.
+            window.location.href = "{{ url_for('main_page') }}";
+
+        }, 2500); 
+
+    </script>
+
+</body>
+</html>

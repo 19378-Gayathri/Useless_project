@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Wiggle Wiggle Academy - Attendance</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: linear-gradient(to bottom, #0077b6, #00b4d8, #90e0ef);
+      color: #003049;
+      text-align: center;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 36px;
+      margin-bottom: 20px;
+      color: white;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+    }
+
+    table {
+      margin: auto;
+      border-collapse: collapse;
+      background: #ffffffaa;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+      min-width: 600px; /* Give the table some space */
+    }
+
+    th, td {
+      padding: 12px 18px; /* Increased padding */
+      border: 1px solid #ade8f4;
+      text-align: center;
+    }
+
+    th {
+      background-color: #023e8a;
+      color: white;
+      font-size: 18px;
+    }
+
+    td {
+        font-size: 16px;
+    }
+
+    .fish-name {
+        font-weight: bold;
+        text-align: left;
+        background-color: #caf0f8;
+    }
+
+    .present {
+      background-color: #9ef01a; /* Brighter Green */
+      color: #004b23;
+      font-weight: bold;
+      font-size: 20px;
+    }
+
+    .absent {
+      background-color: #ff99c8; /* Softer Red/Pink */
+      color: #720026;
+      font-weight: bold;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🐟 Wiggle Wiggle Academy - Weekly Attendance 📅</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Fish Name</th>
+        <th>Mon</th>
+        <th>Tue</th>
+        <th>Wed</th>
+        <th>Thu</th>
+        <th>Fri</th>
+      </tr>
+    </thead>
+    <tbody id="attendanceBody">
+      <!-- Fish data will be dynamically inserted here! -->
+    </tbody>
+  </table>
+
+  <script>
+    // 1. THE NEW DYNAMIC DATA
+    // This is our "database" of fish students.
+    // dailyProgress is an array representing tutorials watched each day [Mon, Tue, Wed, Thu, Fri].
+    const fishData = [
+      { name: "Bubbles", species: "Guppy", dailyProgress: [1, 2, 0, 1, 3] },
+      { name: "Splashy", species: "Clownfish", dailyProgress: [2, 1, 1, 1, 1] },
+      { name: "Finster", species: "Pufferfish", dailyProgress: [1, 0, 1, 2, 0] },
+      { name: "Coral", species: "Angelfish", dailyProgress: [0, 1, 2, 1, 1] },
+      { name: "Gillbert", species: "Goldfish", dailyProgress: [3, 1, 1, 0, 2] },
+      { name: "Nemo Jr.", species: "Clownfish", dailyProgress: [1, 1, 1, 1, 1] },
+      { name: "Wavey", species: "Blue Tang", dailyProgress: [1, 1, 2, 0, 0] },
+      { name: "Shiny", species: "Rainbow Fish", dailyProgress: [0, 2, 2, 3, 1] },
+      { name: "AquaByte", species: "Robo-Fish", dailyProgress: [5, 5, 5, 5, 5] },
+      { name: "Glubster", species: "Catfish", dailyProgress: [0, 0, 1, 1, 1] },
+      { name: "Zippy", species: "Zebra Danio", dailyProgress: [2, 2, 0, 2, 3] }, // <-- New Fish!
+      { name: "Dottie", species: "Polka-dot Loach", dailyProgress: [1, 0, 1, 0, 1] }  // <-- New Fish!
+    ];
+
+    // 2. THE NEW RENDERING LOGIC
+    const tbody = document.getElementById('attendanceBody');
+
+    // Loop through each fish in our database
+    fishData.forEach(fish => {
+      const row = document.createElement('tr'); // Create a new row for the fish
+
+      // Create the name cell
+      const nameCell = document.createElement('td');
+      nameCell.textContent = fish.name;
+      nameCell.className = 'fish-name';
+      row.appendChild(nameCell);
+
+      // Loop through the fish's daily progress for the week
+      fish.dailyProgress.forEach(tutorialsToday => {
+        const cell = document.createElement('td');
+        
+        // This is our main rule:
+        if (tutorialsToday > 0) {
+          cell.textContent = '✔';
+          cell.className = 'present';
+        } else {
+          cell.textContent = '✘';
+          cell.className = 'absent';
+        }
+        row.appendChild(cell);
+      });
+
+      tbody.appendChild(row); // Add the completed row to the table
+    });
+  </script>
+
+</body>
+</html>

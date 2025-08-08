@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Swimming Exam</title>
+<style>
+    body {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background-image: url('https://images.pexels.com/photos/3828753/pexels-photo-3828753.jpeg') !important;
+    background-size: cover;          /* Makes the image fill the screen proportionally */
+    background-position: center;     /* Centers the image */
+    background-repeat: no-repeat;    /* Prevents repeating */
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+.question {
+    background: rgba(255, 255, 255, 0.25); /* Frosted glass */
+    backdrop-filter: blur(8px); /* Adds blur to what's behind */
+    padding: 15px;
+    margin: 20px auto;
+    border-radius: 12px;
+    width: 60%;
+    font-size: 1.2em;
+    color: white;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+}
+
+    label {
+        display: block;
+        margin: 6px;
+        font-size: 1em;
+        cursor: pointer;
+    }
+    input[type="radio"] {
+        transform: scale(1.1);
+        margin-right: 8px;
+        cursor: pointer;
+    }
+    .feedback {
+        font-size: 1em;
+        font-weight: bold;
+        margin-top: 6px;
+    }
+    .correct {
+        color: lightgreen;
+    }
+    .wrong {
+        color: yellow;
+    }
+    #result {
+        font-size: 1.5em;
+        font-weight: bold;
+        margin-top: 20px;
+        background: rgba(0,0,0,0.4);
+        padding: 12px;
+        border-radius: 12px;
+    }
+    button {
+        font-size: 1.1em;
+        padding: 8px 16px;
+        border: none;
+        background: orange;
+        color: white;
+        border-radius: 8px;
+        cursor: pointer;
+        margin-top: 15px;
+    }
+    button:hover {
+        background: darkorange;
+    }
+</style>
+</head>
+<body>
+
+<h1>Fish Practical Exam 📝</h1>
+
+<div id="quiz-container"></div>
+
+<button onclick="showResult()">Finish Exam</button>
+<div id="result"></div>
+
+<script>
+const wrongMessages = [
+    "❌ Nope! Even a goldfish knows better.",
+    "❌ Wrong! Are you trying to drown?",
+    "❌ Oops! That’s how legends become sushi.",
+    "❌ Wrong choice! You might meet the shark sooner.",
+    "❌ Nope! The ocean just facepalmed."
+];
+
+const questions = [
+    { question: "What do you do if a shark appears?", options: ["Swim faster", "Play dead", "Take a selfie 📸"], correct: 1 },
+    { question: "Best way to hold your breath?", options: ["Streamlined like a torpedo", "Like a sleepy whale", "Upside down"], correct: 0 },
+    { question: "What's the first rule of swimming?", options: ["Don't panic", "Bring snacks", "Call your fish friends"], correct: 0 },
+    { question: "Best way to swim faster?", options: ["Use your fins", "Sing loudly", "Hold your breath forever"], correct: 0 },
+    { question: "If you see a jellyfish, you should...", options: ["Touch it", "Swim away calmly", "Ask for directions"], correct: 1 }
+];
+
+let score = 0;
+let attempted = Array(questions.length).fill(false);
+
+function loadQuiz() {
+    const container = document.getElementById("quiz-container");
+    container.innerHTML = "";
+    questions.forEach((q, i) => {
+        const qDiv = document.createElement("div");
+        qDiv.classList.add("question");
+        qDiv.innerHTML = `<p>${i+1}. ${q.question}</p>`;
+        q.options.forEach((opt, idx) => {
+            const label = document.createElement("label");
+            label.innerHTML = `<input type="radio" name="q${i}"> ${opt}`;
+            label.querySelector("input").addEventListener("click", function(){
+                if(attempted[i]) return;
+                attempted[i] = true;
+                const feedback = document.createElement("div");
+                feedback.classList.add("feedback");
+                if(idx === q.correct) {
+                    feedback.textContent = "✅ Correct!";
+                    feedback.classList.add("correct");
+                    score++;
+                } else {
+                    feedback.textContent = wrongMessages[Math.floor(Math.random() * wrongMessages.length)];
+                    feedback.classList.add("wrong");
+                }
+                qDiv.appendChild(feedback);
+            });
+            qDiv.appendChild(label);
+        });
+        container.appendChild(qDiv);
+    });
+}
+
+function showResult() {
+    document.getElementById("result").textContent = `You scored ${score} out of ${questions.length}!`;
+}
+
+loadQuiz();
+</script>
+
+</body>
+</html>

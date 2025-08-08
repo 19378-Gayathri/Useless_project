@@ -1,0 +1,102 @@
+/* General styling to match the whimsical theme */
+body {
+    background-color: #87CEEB; /* A nice sky blue for water */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Comic Sans MS', cursive, sans-serif; /* A playful font */
+    color: #003366; /* Dark blue text for contrast on the light blue body */
+}
+
+.game-container {
+    text-align: center;
+    position: relative; /* Needed for positioning the game over screen */
+}
+
+h1 {
+    color: #FFD700; /* Goldfish color */
+    text-shadow: 2px 2px #0056b3;
+    font-size: 3em;
+}
+
+.instructions {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+/* The canvas where the game is drawn */
+#gameCanvas {
+    /* The background gradient creates the underwater effect */
+    background: linear-gradient(to bottom, #00BFFF, #1E90FF); /* Deep sky blue to dodger blue */
+    border: 8px solid #6B4226; /* A sandy, wooden-like border */
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* Score display during the game */
+.score {
+    position: absolute;
+    top: 90px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2.5em;
+    font-weight: bold;
+    color: white;
+    text-shadow: 3px 3px 5px rgba(0,0,0,0.5); /* Stronger shadow to stand out */
+    z-index: 10;
+}
+
+/* Game Over Screen Styling */
+#gameOverScreen {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 51, 102, 0.9); /* Dark blue, more opaque */
+    color: white;
+    padding: 40px;
+    border-radius: 20px;
+    border: 5px solid #FFD700;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
+    text-align: center;
+    width: 350px;
+    z-index: 100;
+}
+
+#gameOverScreen h2 {
+    font-size: 2.8em;
+    margin-top: 0;
+    color: #FF4500; /* A bright, attention-grabbing color */
+    text-shadow: 2px 2px #000;
+}
+
+#gameOverScreen p {
+    font-size: 1.5em;
+    margin-bottom: 25px;
+}
+
+#restartButton {
+    background-color: #32CD32; /* LimeGreen for a positive action */
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.4em;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    border-bottom: 5px solid #228B22; /* ForestGreen for a 3D effect */
+}
+
+#restartButton:hover {
+    background-color: #3ae03a;
+    transform: translateY(-2px); /* Slight lift on hover */
+}
+
+/* A simple utility class to hide elements. The JavaScript will use this. */
+.hidden {
+    display: none;
+}

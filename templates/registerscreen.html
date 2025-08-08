@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fishademy - Register</title>
+    <style>
+        body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Trebuchet MS', sans-serif;
+    display: flex;
+    justify-content: center;  
+    align-items: center;      
+}
+
+
+        
+        #bg-video {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .container {
+    background: rgba(255, 255, 255, 0.85);
+    padding: 30px;
+    border-radius: 15px;
+    width: 350px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+
+        h1 {
+            color: #0077b6;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #023e8a;
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 8px;
+            border: 1px solid #90e0ef;
+            outline: none;
+        }
+
+        button {
+            background-color: #0096c7;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #0077b6;
+        }
+
+        a {
+            color: #0077b6;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    
+    <video autoplay muted loop id="bg-video">
+        <source src="{{ url_for('static', filename='Sarcastic_Fish_Video.mp4') }}" type="video/mp4">
+        Your browser does not support HTML5 video.
+    </video>
+
+    
+    <div class="container">
+        <h1>🐟 Wiggle Wiggle Academy Register</h1>
+        <form action="/createaccount" method="POST">
+            <label>Username:</label><br>
+            <input type="text" name="username" required><br>
+            <label>Password:</label><br>
+            <input type="password" name="password" required><br>
+            <label>Email:</label><br>
+            <input type="email" name="mailid" required><br><br>
+            <button type="submit">Register</button>
+        </form>
+        <p>Already have an account? <a href="/">Login here</a></p>
+    </div>
+</body>
+</html>

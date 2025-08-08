@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Wiggle Wiggle Academy</title>
+<style>
+    body {
+        font-family: 'Comic Sans MS', cursive, sans-serif;
+        background-image: url('https://images.pexels.com/photos/7973885/pexels-photo-7973885.jpeg') !important;
+        color: #354166;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        background-size: cover;
+        background-attachment: fixed;
+    }
+
+    h1 {
+        font-size: 3em;
+        margin-top: 40px;
+        text-shadow: 2px 2px #fcfeff;
+    }
+
+    p {
+        font-size: 1.3em;
+        margin-bottom: 30px;
+    }
+
+    .menu {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+        max-width: 900px;
+    }
+
+    .menu a {
+        background:rgb(44, 223, 214);
+        padding: 15px 25px;
+        border-radius: 15px;
+        text-decoration: none;
+        font-size: 1.2em;
+        color: rgb(44, 44, 63);
+        transition: 0.3s;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        box-shadow: 0px 4px 6px rgba(0,0,0,0.3);
+    }
+
+    .menu a:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: scale(1.05);
+    }
+
+   
+    @keyframes bubble {
+        0% { transform: translateY(0) scale(1); opacity: 1; }
+        100% { transform: translateY(-1000px) scale(0.5); opacity: 0; }
+    }
+
+    .bubble {
+        position: fixed;
+        bottom: -100px;
+        background: rgba(236, 240, 245, 0.7);
+        border-radius: 50%;
+        animation: bubble 15s infinite;
+        z-index: 0;
+    }
+</style>
+</head>
+<body>
+
+<h1>Welcome to Wiggle Wiggle academy 🐟</h1>
+<p>Select your swim zone:</p>
+
+<div class="menu">
+    <a href="{{ url_for('tutorial') }}">💻 Tutorials</a>
+    <a href="{{ url_for('game') }}">Play the Obstacle Fin-Course!</a>
+<a href="{{ url_for('exam') }}">📝 Exam</a>
+<a href="{{ url_for('mentor') }}">🧑‍🏫 Mentors</a>
+<a href="{{ url_for('kit') }}">🎒 Swim Kit</a>
+<a href="{{ url_for('attendance') }}">📅 Attendance</a>
+<a href="{{ url_for('classnotes') }}">📘 Notes</a>
+<a href="{{ url_for('index') }}">Chatbot</a>
+ <a href="{{ url_for('logout') }}" class="zone-button">Logout</a>
+
+    
+    
+</div>
+
+<!-- Optional: Bubble elements for animation -->
+<script>
+    function createBubble() {
+        const bubble = document.createElement("div");
+        const size = Math.random() * 20 + 10 + "px";
+        bubble.classList.add("bubble");
+        bubble.style.left = Math.random() * 100 + "vw";
+        bubble.style.width = size;
+        bubble.style.height = size;
+        bubble.style.animationDuration = Math.random() * 10 + 5 + "s";
+        document.body.appendChild(bubble);
+        setTimeout(() => { bubble.remove(); }, 15000);
+    }
+    setInterval(createBubble, 500);
+</script>
+
+</body>
+</html>

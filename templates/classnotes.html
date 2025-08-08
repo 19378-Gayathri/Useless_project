@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fishademy Class Notes</title>
+
+  <!-- Fun underwater font -->
+  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome for icons -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Patrick Hand', cursive;
+      background: linear-gradient(to bottom, #c2f0f7, #0077b6);
+      color: #022b3a;
+      padding: 2rem;
+      overflow-x: hidden;
+    }
+
+    h1, h2 {
+      text-shadow: 1px 1px #fff;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    section {
+      margin-bottom: 2rem;
+      padding: 1rem 2rem;
+      background-color: rgba(255, 255, 255, 0.3);
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      animation: floatUp 1.5s ease-in-out;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(20px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    ul li {
+      margin: 10px 0;
+      font-size: 1.1rem;
+    }
+
+    ul li i {
+      margin-right: 10px;
+      color: #023e8a;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 3rem;
+      font-size: 1.2rem;
+    }
+
+    .footer i {
+      color: #00b4d8;
+      animation: bobble 2s infinite;
+    }
+
+    @keyframes bobble {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-8px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1><i class="fas fa-fish"></i> Class Notes - Baby Fish Swim School</h1>
+
+  <section>
+    <h2><i class="fas fa-water"></i> Swimming Basics</h2>
+    <ul>
+      <li><i class="fas fa-circle"></i> Fin flapping frequency: 3 flaps/sec</li>
+      <li><i class="fas fa-circle"></i> Turn radius: 30° tail flick</li>
+      <li><i class="fas fa-circle"></i> Bubble breathing duration: 10 mins</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><i class="fas fa-route"></i> Water Navigation</h2>
+    <ul>
+      <li><i class="fas fa-compass"></i> Sense direction using coral positions</li>
+      <li><i class="fas fa-cloud-showers-heavy"></i> Avoid jellyfish storms</li>
+      <li><i class="fas fa-map-marked-alt"></i> Follow algae trail maps</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><i class="fas fa-life-ring"></i> Swim Safety</h2>
+    <ul>
+      <li><i class="fas fa-user-friends"></i> Always swim with a buddy</li>
+      <li><i class="fas fa-thermometer-half"></i> Avoid warm currents</li>
+      <li><i class="fas fa-skull-crossbones"></i> No swimming in polluted bubbles</li>
+    </ul>
+  </section>
+
+  <div class="footer">
+    <p><i class="fas fa-fish"></i> Stay curious, little swimmer. – Fishademy</p>
+  </div>
+</body>
+</html>

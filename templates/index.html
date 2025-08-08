@@ -1,0 +1,178 @@
+<!-- chatbot.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat with Finley 🐠</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', 'Chalkboard SE', sans-serif;
+            background-color: #87CEEB; /* Sky Blue */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .chat-container {
+            width: 400px;
+            height: 600px;
+            background-color: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            border: 5px solid #00BFFF; /* Deep Sky Blue */
+        }
+
+        h1 {
+            text-align: center;
+            color: #005f73;
+            padding: 15px;
+            margin: 0;
+            background-color: #94d2bd;
+        }
+
+        .chat-window {
+            flex-grow: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .message {
+            padding: 10px 15px;
+            border-radius: 15px;
+            max-width: 80%;
+            line-height: 1.4;
+        }
+
+        .user-message {
+            background-color: #a2d2ff;
+            color: #0d3b66;
+            align-self: flex-end;
+            border-bottom-right-radius: 0;
+        }
+
+        .bot-message {
+            background-color: #e0fbfc;
+            color: #005f73;
+            align-self: flex-start;
+            border-bottom-left-radius: 0;
+        }
+
+        .chat-form {
+            display: flex;
+            padding: 15px;
+            background-color: #94d2bd;
+        }
+
+        #message-input {
+            flex-grow: 1;
+            border: none;
+            padding: 10px;
+            border-radius: 20px;
+            font-size: 1em;
+        }
+
+        button {
+            background-color: #ee6c4d;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 20px;
+            margin-left: 10px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+    </style>
+</head>
+<body>
+    <main class="chat-container">
+        <h1>Chat with Mentor Finley</h1>
+        <div class="chat-window" id="chat-window">
+            <!-- Messages will appear here -->
+            <div class="message bot-message">
+                <p>Welcome to the academy! I'm Finley. Ask me anything to get your fins flapping!</p>
+            </div>
+        </div>
+        <form id="chat-form" class="chat-form">
+            <input type="text" id="message-input" placeholder="Ask Finley a question..." required>
+            <button type="submit">Send</button>
+        </form>
+    </main>
+    <script>
+        // script.js
+console.log("scfript init")
+const chatForm = document.getElementById('chat-form');
+const messageInput = document.getElementById('message-input');
+const chatWindow = document.getElementById('chat-window');
+
+// Store the conversation history
+let conversationHistory = [];
+
+// Function to add a message to the UI
+function addMessageToUI(message, sender) {
+    const messageElement = document.createElement('div');
+    messageElement.classList.add('message', `${sender}-message`);
+    messageElement.innerHTML = `<p>${message}</p>`;
+    chatWindow.appendChild(messageElement);
+    // Scroll to the bottom
+    chatWindow.scrollTop = chatWindow.scrollHeight;
+}
+
+// Handle form submission
+chatForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const userMessage = messageInput.value.trim();
+    if (!userMessage) return;
+
+    // Display user message
+    addMessageToUI(userMessage, 'user');
+
+    // Add user message to history
+    conversationHistory.push({ role: "user", parts: [{ text: userMessage }] });
+
+    // Clear input field
+    messageInput.value = '';
+
+    try {
+        // Send message and history to the backend
+        const response = await fetch('http://localhost:3000/chat', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                message: userMessage,
+                history: conversationHistory
+            })
+        });
+
+        if (!response.ok) {
+            throw new Error('Something went wrong on the backend.');
+        }
+
+        const data = await response.json();
+        const botMessage = data.message;
+        
+        // Display bot message
+        addMessageToUI(botMessage, 'bot');
+        
+        // Add bot message to history
+        conversationHistory.push({ role: "model", parts: [{ text: botMessage }] });
+
+    } catch (error) {
+        console.error('Error fetching chat response:', error);
+        addMessageToUI("Sorry, my connection to the reef is a bit murky right now. Please try again!", 'bot');
+    }
+});
+    </script>
+    <script src="./script.js"></script>
+</body>
+</html>

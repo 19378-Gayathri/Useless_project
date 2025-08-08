@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mentor Assignment</title>
+  <style>
+    body {
+  font-family: Arial, sans-serif;
+  background-image: url('https://images.pexels.com/photos/3361052/pexels-photo-3361052.jpeg') !important;
+  background-size: cover; /* makes the image cover the whole background without distortion */
+  background-position: center; /* centers the image */
+  background-repeat: no-repeat; /* avoids tiling */
+  margin: 0;
+  padding: 20px;
+  text-align: center;
+}
+
+    h1 {
+      color: #141225;
+      margin-bottom: 30px;
+    }
+    .mentor-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    .mentor-card {
+      background-color: rgb(42, 139, 218);
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(32, 79, 210, 0.1);
+      width: 250px;
+      padding: 15px;
+      text-align: center;
+      transition: transform 0.2s;
+    }
+    .mentor-card:hover {
+      transform: translateY(-5px);
+    }
+    .mentor-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+    .mentor-name {
+      font-size: 1.2em;
+      font-weight: bold;
+      margin: 10px 0 5px 0;
+      color: #004d40;
+    }
+    .mentor-desc {
+      font-size: 0.9em;
+      color: #f6f3f3;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Meet Your Mentors 🧜‍♂️</h1>
+
+  <div class="mentor-container">
+    <div class="mentor-card">
+      <img src="{{ url_for('static', filename='tralalelo_tralala.jpg') }}" alt="Tralalero tralela">
+      <div class="mentor-name">Tralalero Tralala</div>
+      <div class="mentor-desc">Master of flips with 10 years teaching baby fish the art of graceful spins.</div>
+    </div>
+
+    <div class="mentor-card">
+      <img src="{{ url_for('static', filename='professor.jpg') }}" alt="Bubba">
+      <div class="mentor-name">Professor Bubba</div>
+      <div class="mentor-desc">Expert in bubble control, teaching students how to ride the currents perfectly.</div>
+    </div>
+
+    <div class="mentor-card">
+      <img src="{{ url_for('static', filename='coralina.jpg') }}" alt="Coralina">
+      <div class="mentor-name">Coralina</div>
+      <div class="mentor-desc">Coral navigation queen, helping fish find their way through complex reefs.</div>
+    </div>
+
+    <div class="mentor-card">
+      <img src="{{ url_for('static', filename='Mr_thanku.jpg') }}" alt="Splashy">
+      <div class="mentor-name">Mr Thankachan(Thanku)</div>
+      <div class="mentor-desc">Specialist in high-speed swimming and competitive fish races.</div>
+    </div>
+
+    <div class="mentor-card">
+      <img src="{{ url_for('static', filename='Mentor.jpg') }}" alt="Finnella">
+      <div class="mentor-name">Finnella</div>
+      <div class="mentor-desc">Has taught over 500 fishlings the importance of synchronized swimming.</div>
+    </div>
+</div>
+
+
+</body>
+</html>
