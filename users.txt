@@ -2,3 +2,5 @@ gayathri,123,gaya@gmail.com
 nemo,123,gaya@gmail.com
 Dory,123,dory@gmail.com
 Dory,123,dory@gmail.com
+neemo,123,nemo@gmail.com
+malu,malu@1,malu@gmail.com
